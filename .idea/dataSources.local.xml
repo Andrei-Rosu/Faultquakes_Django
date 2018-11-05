@@ -15,5 +15,12 @@
       <first-sync>true</first-sync>
       <user-name>faultquakes</user-name>
     </data-source>
+    <data-source name="default" uuid="a6930e61-d1d4-4c68-8425-37c2ec5b28ef">
+      <database-info product="SQLite" version="3.25.1" jdbc-version="2.1" driver-name="SQLite JDBC" driver-version="3.25.1">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
+      <introspection-schemas>*:main</introspection-schemas>
+    </data-source>
   </component>
 </project>

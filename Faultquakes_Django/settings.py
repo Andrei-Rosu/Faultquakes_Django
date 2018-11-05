@@ -83,6 +83,12 @@ WSGI_APPLICATION = 'Faultquakes_Django.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': 'Django default',
+#     }
+# }
 
 DATABASES = {
     'default': dj_database_url.config(
