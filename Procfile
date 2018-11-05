@@ -1,0 +1,1 @@
+web: gunicorn Faultquakes_Django.wsgi --log-file -
