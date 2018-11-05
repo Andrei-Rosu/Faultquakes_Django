@@ -1,14 +1,21 @@
 {% extends "faultquakes/base.html" %}
 {% block content %}
         <article class="media content-section">
-            <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
+            <img class="rounded-circle article-img" src="{{ post.image.url }}">
             <div class="media-body">
                 <div class="article-metadata">
-                    <a class="mr-2" href="#">{{ object.author }}</a>
-                    <small class="text-muted">{{ object.date_posted|date:"d F, Y" }}</small>
+                    <a class="mr-2" href="{% url 'user-posts' post.uploaded_by.username %}">{{ post.uploaded_by }}</a>
+                    <small class="text-muted">{{ post.date_posted|date:"d F, Y" }}</small>
+                    {% if post.uploaded_by == user %}
+                        <div>
+                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' post.id %}">Update</a>
+                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' post.id %}">Delete</a>
+                        </div>
+                    {% endif %}
                 </div>
-                <h2 class="article-title">{{ object.title }}</h2>
-                <p class="article-content">{{ object.content }}</p>
+                <h2 class="article-title">{{ post.title }}</h2>
+                <p class="article-content">{{ post.content }}</p>
             </div>
         </article>
 {% endblock content %}
+

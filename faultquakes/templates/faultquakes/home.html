@@ -1,15 +1,65 @@
 {% extends "faultquakes/base.html" %}
 {% block content %}
-    {% for post in posts %}
-        <article class="media content-section">
-            <div class="media-body">
-                <div class="article-metadata">
-                    <a class="mr-2" href="#">{{ post.author }}</a>
-                    <small class="text-muted">{{ post.date_posted|date:"d F, Y" }}</small>
+<div class="row text-center">
+    {% for research in research %}
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card">
+                <img class="card-img-top" src="{{ research.objects.author.research.image.url }}" alt="">
+                <div class="card-body">
+                    <h4><a class="article-title" href="{% url 'research-detail' research.objects.id%}">{{ research.objects.title }}</a></h4>
+                    <p class="card-text">{{ research.content|safe|truncatewords:"15"|linebreaks }}
+      <a href="{% url 'research-detail' research.id %}">read more</a></p>
+                    <small class="text-muted">{{ research.date_posted|date:"d F, Y" }}</small>
+                    <a class="mr-2" href="{% url 'user-research' research.author.username %}">by {{ research.author }}</a>
+                    {% for team in team.research %}
+                        <small class="text-muted">Team{{ team.research}}</small>
+                        {% endfor %}
                 </div>
-                <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
-                <p class="article-content">{{ post.content }}</p>
             </div>
-        </article>
+        </div>
     {% endfor %}
+</div><!-- /.row .text-center -->
+
+    <div class="row text-center">
+
+        {% for post in posts %}
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{ post.image.url }}" alt="">
+                    <div class="card-body">
+                        <h4><a class="article-title" href="{% url 'post-detail' post.id%}">{{ post.title }}</a></h4>
+                        <p class="card-text">{{ post.content|safe|truncatewords:"15"|linebreaks }}
+      <a href="{% url 'post-detail' post.id %}">read more</a></p>
+                        <small class="text-muted">{{ post.date_posted|date:"d F, Y" }}</small>
+                        <a class="mr-2" href="{% url 'user-posts' post.uploaded_by.username %}">by {{ post.uploaded_by }}</a>
+                        <p>Found in: {% for team in post.team %}
+                         <small class="text-muted">{{ team }} </small>
+                        {% endfor %}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div><!-- /.row .text-center -->
+
+    {% if is_paginated %}
+        {% if page_obj.has_previous %}
+            <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3'%}
+                <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+        {% endif %}
+
+    {% endif %}
 {% endblock content %}

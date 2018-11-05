@@ -1,0 +1,66 @@
+{% extends "faultquakes/base.html" %}
+{% block content %}
+
+
+
+    <div class="jumbotron p-3 p-md-5 text-black rounded bg-white">
+        <div class="col-md-6 px-0">
+            <h1 class="display-6 font-italic" >
+                Welcome to the Geology Laboratory of Ecole Normale Supérieure</h1>
+        </div>
+        <div class="col-md-12 px-0">
+            <p class="lead my-3">A place for research...
+                The Geology Laboratory of ENS is both a place for research
+                and a place of training in Earth Sciences through teaching and research.
+                Although the size of the laboratory is modest,
+                it covers a very wide spectrum of research topics:
+                geophysics, seismology, geodesy, seismotectonics, geology,
+                rock mechanics, thermochemistry, mineralogy, geomaterials, geochemistry.
+                This strongly favors exchanges between topics which is a strong feature
+                of the laboratory.</p>
+            <p class="lead mb-0"><a href="#" class="text-info font-weight-bold">Continue reading...</a></p>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        {% for research in research|slice:"2" %}
+            <div class="col-md-6 card-deck">
+                <div class="card flex-md-row mb-4 ">
+                    <img class="card-img-left flex-auto d-none d-lg-block h-50 " src="{{ research.image.url }}" alt="Card image cap">
+                    <div class="card-body d-flex flex-column align-items-start">
+                        <strong class="d-inline-block mb-2 text-primary">Research</strong>
+                        <h3 class="mb-0">
+                            <a class="text-dark" href="{% url 'research-detail' research.id%}">{{ research.title }}</a>
+                        </h3>
+                        <p class="card-text">{{ research.authors|safe|truncatewords:"15"|linebreaks }}</p>
+                        <p class="card-text">{{ research.year|date:"Y" }}</p>
+                        <a href="{% url 'research-detail' research.id %}">read more</a>
+                        <p>Found in:
+                            <small class="text-muted">{{ research.team }} </small></p>
+                    </div>
+
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row mb-2">
+        {% for post in post|slice:"6" %}
+            <div class="col-md-4  card-deck mb-4 ">
+                <div class="card">
+                    <strong class="d-inline-block mb-2 text-primary">Publications</strong>
+                    <img class="card-img-top" src="{{ post.image.url }}" alt="">
+                    <div class="card-body">
+                        <h4><a class="article-title" href="{% url 'post-detail' post.id%}">{{ post.title|safe|truncatewords:"15"|linebreaks  }}</a></h4>
+                        <p class="card-text">{{ post.authors|safe|truncatewords:"15"|linebreaks }}</p>
+                        <p><strong class="text-muted">{{ post.year|date:"Y" }}</strong></p>
+                        <p>Found in:
+                            <small class="text-muted">{{ post.team }} </small></p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+
+{% endblock content %}

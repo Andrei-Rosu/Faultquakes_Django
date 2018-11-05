@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'u!sb+)-milyl!!jh5&=169kwoavf3*a(()1-hh5@(m7bm4+h@f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'crispy_forms',
+    'news.apps.NewsConfig',
+    'openings.apps.OpeningsConfig',
     'users.apps.UsersConfig',
     'faultquakes.apps.FaultquakesConfig',
     'django.contrib.admin',
@@ -40,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'multiselectfield',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +132,9 @@ MEDIA_URL = '/media/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'faultquakes-home'
 LOGIN_URL = 'login'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'rosuandreitiberiu@gmail.com'
+EMAIL_HOST_PASSWORD = 'dviqzpunjyhnljqk'
