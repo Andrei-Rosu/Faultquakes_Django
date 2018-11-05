@@ -365,11 +365,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="0014_auto_20181028_0952.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/faultquakes/migrations/0014_auto_20181028_0952.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/faultquakes/models.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -382,33 +377,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/faultquakes/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#54#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="post_confirm_delete.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/faultquakes/templates/faultquakes/post_confirm_delete.html">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="post_detail.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/faultquakes/templates/faultquakes/post_detail.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="post_form.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/faultquakes/templates/faultquakes/post_form.html">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Faultquakes_Django/__init__.py">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
@@ -431,7 +401,31 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="0014_auto_20181028_0952.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/faultquakes/migrations/0014_auto_20181028_0952.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="0013_auto_20181028_0936.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/faultquakes/migrations/0013_auto_20181028_0936.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="0012_auto_20181028_0934.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/faultquakes/migrations/0012_auto_20181028_0934.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="89" column="10" lean-forward="true" selection-start-line="89" selection-start-column="10" selection-end-line="89" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="0002_post_image.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/faultquakes/migrations/0002_post_image.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/faultquakes/migrations/__init__.py">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
@@ -548,7 +542,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="4" />
     <option name="y" value="23" />
     <option name="width" value="1350" />
@@ -579,6 +573,32 @@
               <item name="Faultquakes_Django" type="462c0819:PsiDirectoryNode" />
               <item name="faultquakes" type="462c0819:PsiDirectoryNode" />
               <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Faultquakes_Django" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Faultquakes_Django" type="462c0819:PsiDirectoryNode" />
+              <item name="faultquakes" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Faultquakes_Django" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Faultquakes_Django" type="462c0819:PsiDirectoryNode" />
+              <item name="faultquakes" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="faultquakes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Faultquakes_Django" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Faultquakes_Django" type="462c0819:PsiDirectoryNode" />
+              <item name="faultquakes" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Faultquakes_Django" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Faultquakes_Django" type="462c0819:PsiDirectoryNode" />
+              <item name="faultquakes" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="faultquakes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -724,16 +744,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="23" width="1350" height="722" extended-state="1" />
+    <frame x="4" y="23" width="1350" height="722" extended-state="0" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50666666" side_tool="true" visible="true" weight="0.24845679" />
+      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.2940741" side_tool="true" visible="true" weight="0.24845679" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32928678" />
       <window_info anchor="bottom" id="Run" order="3" weight="0.3164179" />
       <window_info anchor="right" id="Coverage" order="0" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49333334" visible="true" weight="0.24845679" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.70592594" visible="true" weight="0.24845679" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20444444" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection Results" order="0" weight="0.28475937" />
@@ -763,23 +783,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/faultquakes/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/faultquakes/signals.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" lean-forward="true" selection-end-line="29" />
-          <folding>
-            <element signature="e#0#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/news/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -998,9 +1001,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Faultquakes_Django/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="jar://$PROJECT_DIR$/venv/lib/python3.6/site-packages/setuptools-39.1.0-py3.6.egg!/pkg_resources/_vendor/packaging/requirements.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1063,22 +1063,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/faultquakes/migrations/0013_auto_20181028_0936.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/faultquakes/migrations/0014_auto_20181028_0952.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/faultquakes/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="53" column="51" selection-start-line="53" selection-start-column="51" selection-end-line="53" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/faultquakes/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1111,10 +1095,39 @@
     <entry file="file://$PROJECT_DIR$/faultquakes/templates/faultquakes/research_confirm_delete.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/faultquakes/migrations/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faultquakes/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="53" column="51" selection-start-line="53" selection-start-column="51" selection-end-line="53" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Faultquakes_Django/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/faultquakes/migrations/0001_initial.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/faultquakes/migrations/__init__.py">
+    <entry file="file://$PROJECT_DIR$/faultquakes/migrations/0014_auto_20181028_0952.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faultquakes/migrations/0013_auto_20181028_0936.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faultquakes/migrations/0012_auto_20181028_0934.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="89" column="10" lean-forward="true" selection-start-line="89" selection-start-column="10" selection-end-line="89" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/faultquakes/migrations/0002_post_image.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
