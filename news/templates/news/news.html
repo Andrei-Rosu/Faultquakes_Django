@@ -3,10 +3,15 @@
 
     {% for news in news %}
         <article class="media content-section">
-            <img class="rounded-circle article-img" src="{{ news.uploaded_by.profile.image.url }}">
+        {% if news.image %}
+            <img class="rounded-circle article-img" src="{{ news.image.url }}">
+        {% endif %}
             <div class="media-body">
                 <div class="article-metadata">
-                    <a class="mr-2" href="{% url 'user-news' news.uploaded_by.username %}">{{ news.uploaded_by }}</a>
+                {% if news.video %}
+                <iframe width="560" height="315" src="{{ news.video }}" frameborder="0" allow="accelerometer;
+                autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                {% endif %}
                     <small class="text-muted">{{ news.date_posted|date:"d F, Y" }}</small>
                     {% if news.uploaded_by == user %}
                         <div>

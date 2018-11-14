@@ -17,6 +17,7 @@ class Post(models.Model):
     title = models.CharField(max_length=250, default='Title', blank=True)
     authors = models.CharField(max_length=250, default='Authors', blank=True)
     journal = models.CharField(max_length=250, default='Journal', blank=True)
+    content = models.TextField(blank=True)
     # number = models.IntegerField
     # pages = models.IntegerField
     year = models.DateTimeField(default=timezone.now)
@@ -41,6 +42,7 @@ class Research(models.Model):
         title = models.CharField(max_length=250, default='Title', blank=True)
         authors = models.CharField(max_length=250, default='Authors', blank=True)
         journal = models.CharField(max_length=250, default='Journal', blank=True)
+        content = models.TextField(blank=True)
         # number = models.IntegerField
         # pages = models.IntegerField
         year = models.DateTimeField(default=timezone.now)
@@ -59,6 +61,48 @@ class Research(models.Model):
 
         def get_absolute_url(self):
             return reverse('research-detail', kwargs={'pk': self.pk})
+
+
+class Geodesy(models.Model):
+    title = models.CharField(max_length=250, default='Title', blank=True)
+    content = models.TextField(blank=True)
+    image = models.ImageField(default='default.jpg', upload_to='geodesy_pics')
+    date_posted = models.DateTimeField(default=timezone.now)
+    uploaded_by = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('geodesy-detail', kwargs={'pk': self.pk})
+
+
+class Modeling(models.Model):
+    title = models.CharField(max_length=250, default='Title', blank=True)
+    content = models.TextField(blank=True)
+    image = models.ImageField(default='default.jpg', upload_to='modeling_pics')
+    date_posted = models.DateTimeField(default=timezone.now)
+    uploaded_by = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('geodesy-detail', kwargs={'pk': self.pk})
+
+
+class Rock(models.Model):
+    title = models.CharField(max_length=250, default='Title', blank=True)
+    content = models.TextField(blank=True)
+    image = models.ImageField(default='default.jpg', upload_to='rock_pics')
+    date_posted = models.DateTimeField(default=timezone.now)
+    uploaded_by = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('rock-detail', kwargs={'pk': self.pk})
 
 
 

@@ -1,44 +1,51 @@
 {% extends "faultquakes/base.html" %}
+
 {% block content %}
 
-    {% for research in research %}
-        <article class="media content-section">
-            <img class="rounded-circle article-img" src="{{ research.uploaded_by.profile.image.url }}">
-            <div class="media-body">
-                <div class="article-metadata">
-                    <a class="mr-2" href="{% url 'user-research' research.uploaded_by.username %}">{{ research.uploaded_by }}</a>
-                    <small class="text-muted">{{ research.date_posted|date:"d F, Y" }}</small>
-                    {% if research.uploaded_by == user %}
-                        <div>
-                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'research-update' research.id %}">Update</a>
-                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'research-delete' research.id %}">Delete</a>
-                        </div>
-                    {% endif %}
-                </div>
-                <h2 class="article-title">{{ research.title }}</h2>
-                <p class="article-content">{{ research.content }}</p>
-            </div>
-        </article>
-    {% endfor %}
 
-    {% if is_paginated %}
-        {% if page_obj.has_previous %}
-            <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
-            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-        {% endif %}
 
-        {% for num in page_obj.paginator.page_range %}
-            {% if page_obj.number == num %}
-                <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
-                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3'%}
-                <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
-            {% endif %}
-        {% endfor %}
+    <div class="row">
 
-        {% if page_obj.has_next %}
-            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
-            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-        {% endif %}
+        <div class="container col-md-4">
 
-    {% endif %}
+            <h4><h4><a href="{% url 'geodesy' %}">Geodesy</a></h4></h4>
+            <p>Geodesy also known as geodetics, is the earth science of accurately measuring and
+                understanding three of Earth's fundamental properties: its geometric shape, orientation in space,
+                and gravitational field. The field also incorporates studies of how these properties change over
+                time and equivalent measurements for other planets (known as planetary geodesy).
+                Geodynamical phenomena include crustal motion, tides, and polar motion, which can be studied by
+                designing global and national control networks, applying space and terrestrial techniques, and
+                relying on datums and coordinate systems...</p><a href="{% url 'geodesy' %}">read more about geodesy...</a>
+
+        </div>
+
+
+        <div class="container col-md-4">
+
+            <h4><a href="{% url 'modeling' %}">Modeling</a></h4>
+            <p>Geologic modelling, Geological modelling or Geomodelling is the applied science of creating computerized
+                representations of portions of the Earth's crust based on geophysical and geological observations made on
+                and below the Earth surface. A Geomodel is the numerical equivalent of a three-dimensional geological map
+                complemented by a description of physical quantities in the domain of interest. Geomodelling is related to
+                the concept of Shared Earth Model;[2] which is a multidisciplinary, interoperable and updatable knowledge
+                base about the subsurface...</p><a href="{% url 'modeling' %}">read more about modeling...</a>
+        </div>
+        <div class="container col-md-4">
+            <h4><a href="{% url 'rock' %}">Rock Mechanics</a></h4>
+            <p>Rock mechanics is a theoretical and applied science of the mechanical behavior of rock and rock masses;
+                compared to geology, it is that branch of mechanics concerned with the response of rock and rock masses
+                to the force fields of their physical environment.
+                Rock mechanics forms part of the much broader subject of geomechanics,
+                which is concerned with the mechanical responses of all geological materials,
+                including soils... </p><a href="{% url 'rock' %}">read more about rock mechanics...</a>
+        </div>
+
+
+
+
+
+    </div>
+
+
+
 {% endblock content %}

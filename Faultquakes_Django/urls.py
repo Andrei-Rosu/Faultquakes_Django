@@ -41,6 +41,7 @@ urlpatterns = [
          ),
     path('', include('news.urls'),
          ),
+    path('summernote/', include('django_summernote.urls')),
 
 ]
 

@@ -1,27 +1,34 @@
 {% extends "faultquakes/base.html" %}
 {% block content %}
 <div class="row text-center">
-    {% for research in research %}
-        <div class="col-lg-3 col-md-6 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="{{ research.objects.author.research.image.url }}" alt="">
-                <div class="card-body">
-                    <h4><a class="article-title" href="{% url 'research-detail' research.objects.id%}">{{ research.objects.title }}</a></h4>
-                    <p class="card-text">{{ research.content|safe|truncatewords:"15"|linebreaks }}
-      <a href="{% url 'research-detail' research.id %}">read more</a></p>
-                    <small class="text-muted">{{ research.date_posted|date:"d F, Y" }}</small>
-                    <a class="mr-2" href="{% url 'user-research' research.author.username %}">by {{ research.author }}</a>
-                    {% for team in team.research %}
-                        <small class="text-muted">Team{{ team.research}}</small>
-                        {% endfor %}
-                </div>
-            </div>
-        </div>
-    {% endfor %}
+
 </div><!-- /.row .text-center -->
 
     <div class="row text-center">
-
+{% for news in news %}
+        <article class="media content-section">
+        {% if news.image %}
+            <img class="rounded-circle article-img" src="{{ news.image.url }}">
+        {% endif %}
+            <div class="media-body">
+                <div class="article-metadata">
+                {% if news.video %}
+                <iframe width="560" height="315" src="{{ news.video }}" frameborder="0" allow="accelerometer;
+                autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                {% endif %}
+                    <small class="text-muted">{{ news.date_posted|date:"d F, Y" }}</small>
+                    {% if news.uploaded_by == user %}
+                        <div>
+                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'news-update' news.id %}">Update</a>
+                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'news-delete' news.id %}">Delete</a>
+                        </div>
+                    {% endif %}
+                </div>
+            <h4><a class="article-title" href="{% url 'news-detail' news.id%}">{{ news.title }}</a></h4>
+                <p class="article-content">{{ news.content|safe|truncatewords:"35"|linebreaks }}</p>
+            </div>
+        </article>
+    {% endfor %}
         {% for post in posts %}
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">

@@ -1,0 +1,20 @@
+{% extends "faultquakes/base.html" %}
+{% block content %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="{% url 'user-modeling' modeling.uploaded_by.username %}">{{ modeling.uploaded_by }}</a>
+                    <small class="text-muted">{{ modeling.date_posted|date:"d F, Y" }}</small>
+                    {% if modeling.uploaded_by == user %}
+                        <div>
+                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'modeling-update' modeling.id %}">Update</a>
+                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'modeling-delete' modeling.id %}">Delete</a>
+                        </div>
+                    {% endif %}
+                </div>
+                <h2 class="article-title">{{ modeling.title|safe }}</h2>
+                <p class="article-content">{{ modeling.content|safe }}</p>
+            </div>
+        </article>
+{% endblock content %}
+

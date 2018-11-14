@@ -23,10 +23,9 @@
     </div>
 
     <div class="row mb-2">
-        {% for research in research|slice:"2" %}
-            <div class="col-md-6 card-deck">
+        {% for research in research|slice:"3" %}
+            <div class="col-md-4 card-deck">
                 <div class="card flex-md-row mb-4 ">
-                    <img class="card-img-left flex-auto d-none d-lg-block h-50 " src="{{ research.image.url }}" alt="Card image cap">
                     <div class="card-body d-flex flex-column align-items-start">
                         <strong class="d-inline-block mb-2 text-primary">Research</strong>
                         <h3 class="mb-0">
@@ -45,10 +44,9 @@
     </div>
     <div class="row mb-2">
         {% for post in post|slice:"6" %}
-            <div class="col-md-4  card-deck mb-4 ">
+            <div class="col-md-3  card-deck mb-3 ">
                 <div class="card">
                     <strong class="d-inline-block mb-2 text-primary">Publications</strong>
-                    <img class="card-img-top" src="{{ post.image.url }}" alt="">
                     <div class="card-body">
                         <h4><a class="article-title" href="{% url 'post-detail' post.id%}">{{ post.title|safe|truncatewords:"15"|linebreaks  }}</a></h4>
                         <p class="card-text">{{ post.authors|safe|truncatewords:"15"|linebreaks }}</p>

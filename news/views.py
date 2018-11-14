@@ -41,7 +41,7 @@ class NewswallDetailView(DetailView):
 class NewswallCreateView(LoginRequiredMixin, CreateView):
     template_name = 'news/news_form.html'
     model = Newswall
-    fields = ['title', 'content']
+    fields = ['title', 'content', 'image', 'video']
 
     def form_valid(self, form):
         form.instance.uploaded_by = self.request.user
@@ -51,7 +51,7 @@ class NewswallCreateView(LoginRequiredMixin, CreateView):
 class NewswallUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     template_name = 'news/news_form.html'
     model = Newswall
-    fields = ['title', 'content']
+    fields = ['title', 'content', 'image', 'video']
 
     def form_valid(self, form):
         form.instance.uploaded_by = self.request.user

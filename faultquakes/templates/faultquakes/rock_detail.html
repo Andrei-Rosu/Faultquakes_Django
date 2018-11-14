@@ -1,0 +1,20 @@
+{% extends "faultquakes/base.html" %}
+{% block content %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="{% url 'user-rock' rock.uploaded_by.username %}">{{ rock.uploaded_by }}</a>
+                    <small class="text-muted">{{ rock.date_posted|date:"d F, Y" }}</small>
+                    {% if rock.uploaded_by == user %}
+                        <div>
+                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'rock-update' rock.id %}">Update</a>
+                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'rock-delete' rock.id %}">Delete</a>
+                        </div>
+                    {% endif %}
+                </div>
+                <h2 class="article-title">{{ rock.title|safe }}</h2>
+                <p class="article-content">{{ rock.content|safe }}</p>
+            </div>
+        </article>
+{% endblock content %}
+

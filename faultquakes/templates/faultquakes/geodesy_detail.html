@@ -1,0 +1,20 @@
+{% extends "faultquakes/base.html" %}
+{% block content %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="{% url 'user-geodesy' geodesy.uploaded_by.username %}">{{ geodesy.uploaded_by }}</a>
+                    <small class="text-muted">{{ geodesy.date_posted|date:"d F, Y" }}</small>
+                    {% if geodesy.uploaded_by == user %}
+                        <div>
+                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'geodesy-update' geodesy.id %}">Update</a>
+                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'geodesy-delete' geodesy.id %}">Delete</a>
+                        </div>
+                    {% endif %}
+                </div>
+                <h2 class="article-title">{{ geodesy.title|safe }}</h2>
+                <p class="article-content">{{ geodesy.content|safe }}</p>
+            </div>
+        </article>
+{% endblock content %}
+

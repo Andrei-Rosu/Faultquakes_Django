@@ -2,64 +2,64 @@
 {% block content %}
     <div class="parent-container">
 
-            <div class="container">
+        <div class="container">
+            <h4 class="text-center pb-5">Openings in the lab</h4>
 
+            {% for job in jobs %}
 
-                {% for job in jobs %}
-
-                    {% if "Within" in job.lab_choice %}
-                        <div class="col-md-6">
-                            <article class="media content-section">
-                                <div class="media-body">
-                                    <div class="article-metadata">
-                                        {% if job.uploaded_by == user %}
-                                            <div>
-                                                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'job-update' job.id %}">Update</a>
-                                                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'job-delete' job.id %}">Delete</a>
-                                            </div>
-                                        {% endif %}
-                                    </div>
-                                    <h4>Openings in the lab</h4>
-                                    <h5><a class="article-title" href="{% url 'job-detail' job.id%}">{{ job.title }}</a></h5>
-                                    <p class="article-content"><span>{{ job.content }}</span></p>
-                                    <small class="text-muted">Deadline : {{ job.deadline|date:"d F, Y" }}</small>
-                                </div>
-                            </article>
-                        </div>
-
-                    {% endif%}
-                {% endfor %}
-            </div>
-
-            <div class="container">
-
-                {% for job in jobs %}
-
-                    {% if "Outside" in job.lab_choice %}
-                        <div class="col-md-6">
-                            <article class="media content-section col-sm">
-                                <div class="media-body">
-                                    <div class="article-metadata">
-                                        {% if job.uploaded_by == user %}
-                                            <div>
-                                                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'job-update' job.id %}">Update</a>
-                                                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'job-delete' job.id %}">Delete</a>
-                                            </div>
-                                        {% endif %}
-                                    </div>
-                                    <h4>Openings elsewhere</h4>
-                                    <h5><a class="article-title" href="{% url 'job-detail' job.id%}">{{ job.title }}</a></h5>
-                                    <p class="article-content"><span>{{ job.content }}</span></p>
-                                    <small class="text-muted">Deadline : {{ job.deadline|date:"d F, Y" }}</small>
+                {% if "Within" in job.lab_choice %}
+                    <div class="col-md-12">
+                        <article class="media content-section">
+                            <div class="media-body">
+                                <div class="article-metadata">
+                                    {% if job.uploaded_by == user %}
+                                        <div>
+                                            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'job-update' job.id %}">Update</a>
+                                            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'job-delete' job.id %}">Delete</a>
+                                        </div>
+                                    {% endif %}
                                 </div>
 
-                            </article>
-                        </div>
-                    {% endif %}
+                                <h5><a class="article-title" href="{% url 'job-detail' job.id%}">{{ job.title }}</a></h5>
+                                <p class="article-content"><span>{{ job.content }}</span></p>
+                                <small class="text-muted">Deadline : {{ job.deadline|date:"d F, Y" }}</small>
+                            </div>
+                        </article>
+                    </div>
 
-                {% endfor %}
-            </div>
+                {% endif%}
+            {% endfor %}
         </div>
+
+        <div class="container">
+            <h4 class="text-center pb-5">Openings elsewhere</h4>
+            {% for job in jobs %}
+
+                {% if "Outside" in job.lab_choice %}
+                    <div class="col-md-12">
+                        <article class="media content-section col-sm">
+                            <div class="media-body">
+                                <div class="article-metadata">
+                                    {% if job.uploaded_by == user %}
+                                        <div>
+                                            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'job-update' job.id %}">Update</a>
+                                            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'job-delete' job.id %}">Delete</a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+
+                                <h5><a class="article-title" href="{% url 'job-detail' job.id%}">{{ job.title }}</a></h5>
+                                <p class="article-content"><span>{{ job.content }}</span></p>
+                                <small class="text-muted">Deadline : {{ job.deadline|date:"d F, Y" }}</small>
+                            </div>
+
+                        </article>
+                    </div>
+                {% endif %}
+
+            {% endfor %}
+        </div>
+    </div>
 
 
     {% if is_paginated %}
