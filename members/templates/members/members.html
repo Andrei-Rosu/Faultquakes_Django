@@ -1,0 +1,49 @@
+{% extends "faultquakes/base.html" %}
+{% block content %}
+
+    {% for news in news %}
+        <article class="media content-section">
+        {% if news.image %}
+            <img class="rounded-circle article-img" src="{{ news.image.url }}">
+        {% endif %}
+            <div class="media-body">
+                <div class="article-metadata">
+                {% if news.video %}
+                <iframe width="560" height="315" src="{{ news.video }}" frameborder="0" allow="accelerometer;
+                autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                {% endif %}
+                    <small class="text-muted">{{ news.date_posted|date:"d F, Y" }}</small>
+                    {% if news.uploaded_by == user %}
+                        <div>
+                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'news-update' news.id %}">Update</a>
+                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'news-delete' news.id %}">Delete</a>
+                        </div>
+                    {% endif %}
+                </div>
+            <h4><a class="article-title" href="{% url 'news-detail' news.id%}">{{ news.title }}</a></h4>
+                <p class="article-content">{{ news.content|safe|truncatewords:"35"|linebreaks }}</p>
+            </div>
+        </article>
+    {% endfor %}
+
+    {% if is_paginated %}
+        {% if page_obj.has_previous %}
+            <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3'%}
+                <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+        {% endif %}
+
+    {% endif %}
+{% endblock content %}
