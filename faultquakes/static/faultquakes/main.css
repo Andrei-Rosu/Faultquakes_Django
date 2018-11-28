@@ -103,6 +103,11 @@ footer{
 .parent-container{
     display: flex;
 }
+.news, .publications {
+    box-sizing: content-box;
+}
+
+
 
 
 
