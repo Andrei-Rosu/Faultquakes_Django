@@ -39,7 +39,7 @@ urlpatterns = [
          ),
     path('', include('openings.urls'),
          ),
-    path('', include('news.urls'),
+    path('', include('members.urls'),
          ),
     path('summernote/', include('django_summernote.urls')),
 

@@ -1,31 +1,106 @@
 {% extends "faultquakes/base.html" %}
 {% block content %}
-
-    {% for news in news %}
-        <article class="media content-section">
-        {% if news.image %}
-            <img class="rounded-circle article-img" src="{{ news.image.url }}">
-        {% endif %}
-            <div class="media-body">
-                <div class="article-metadata">
-                {% if news.video %}
-                <iframe width="560" height="315" src="{{ news.video }}" frameborder="0" allow="accelerometer;
-                autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                {% endif %}
-                    <small class="text-muted">{{ news.date_posted|date:"d F, Y" }}</small>
-                    {% if news.uploaded_by == user %}
-                        <div>
-                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'news-update' news.id %}">Update</a>
-                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'news-delete' news.id %}">Delete</a>
-                        </div>
-                    {% endif %}
+<h4><strong class="d-inline-block mb-2 text-primary">Permanent members: </strong></h4>
+    <div class="row mb-2">
+    {% for member in members %}
+        {% if "Permanent" in member.status %}
+            <div class="col-lg-3 col-md-6 card-deck mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{ member.image.url }}" alt="">
+                    <div class="card-body">
+                        <h4><a class="article-title" href="{% url 'member-detail' member.id%}">{{ member.name }}</a></h4>
+                        <p class="card-text">{{ member.description|safe|truncatewords:"15"|linebreaks }}
+      <a href="{% url 'member-detail' member.id %}">read more</a></p>
+                        <p>Team : {% for team in member.team %}
+                         <small class="text-muted">{{ team }} </small>
+                        {% endfor %}</p>
+                    </div>
                 </div>
-            <h4><a class="article-title" href="{% url 'news-detail' news.id%}">{{ news.title }}</a></h4>
-                <p class="article-content">{{ news.content|safe|truncatewords:"35"|linebreaks }}</p>
             </div>
-        </article>
-    {% endfor %}
+        {% endif %}
+        {% endfor %}
+    </div>
+    <h4><strong class="d-inline-block mb-2 text-primary">Post doctorands: </strong></h4>
+    <div class="row mb-2">
+    {% for member in members %}
+        {% if "Postdoc" in member.status %}
+            <div class="col-lg-3 col-md-6 card-deck mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{ member.image.url }}" alt="">
+                    <div class="card-body">
+                        <h4><a class="article-title" href="{% url 'member-detail' member.id%}">{{ member.name }}</a></h4>
+                        <p class="card-text">{{ member.description|safe|truncatewords:"15"|linebreaks }}
+      <a href="{% url 'member-detail' member.id %}">read more</a></p>
+                        <p>Team : {% for team in member.team %}
+                         <small class="text-muted">{{ team }} </small>
+                        {% endfor %}</p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% endfor %}
+    </div>
 
+    <h4><strong class="d-inline-block mb-2 text-primary">Phd Students: </strong></h4>
+    <div class="row mb-2">
+    {% for member in members %}
+        {% if "Phd" in member.status %}
+            <div class="col-lg-3 col-md-6 card-deck mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{ member.image.url }}" alt="">
+                    <div class="card-body">
+                        <h4><a class="article-title" href="{% url 'member-detail' member.id%}">{{ member.name }}</a></h4>
+                        <p class="card-text">{{ member.description|safe|truncatewords:"15"|linebreaks }}
+      <a href="{% url 'member-detail' member.id %}">read more</a></p>
+                        <p>Team : {% for team in member.team %}
+                         <small class="text-muted">{{ team }} </small>
+                        {% endfor %}</p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <h4><strong class="d-inline-block mb-2 text-primary">Visitors: </strong></h4>
+    <div class="row mb-2">
+    {% for member in members %}
+        {% if "Visitor" in member.status %}
+            <div class="col-lg-3 col-md-6 card-deck mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{ member.image.url }}" alt="">
+                    <div class="card-body">
+                        <h4><a class="article-title" href="{% url 'member-detail' member.id%}">{{ member.name }}</a></h4>
+                        <p class="card-text">{{ member.description|safe|truncatewords:"15"|linebreaks }}
+      <a href="{% url 'member-detail' member.id %}">read more</a></p>
+                        <p>Team : {% for team in member.team %}
+                         <small class="text-muted">{{ team }} </small>
+                        {% endfor %}</p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <h4><strong class="d-inline-block mb-2 text-primary">Former members: </strong></h4>
+    <div class="row mb-2">
+    {% for member in members %}
+        {% if "Former" in member.status %}
+            <div class="col-lg-3 col-md-6 card-deck mb-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{ member.image.url }}" alt="">
+                    <div class="card-body">
+                        <h4><a class="article-title" href="{% url 'member-detail' member.id%}">{{ member.name }}</a></h4>
+                        <p class="card-text">{{ member.description|safe|truncatewords:"15"|linebreaks }}
+      <a href="{% url 'member-detail' member.id %}">read more</a></p>
+                        <p>Team : {% for team in member.team %}
+                         <small class="text-muted">{{ team }} </small>
+                        {% endfor %}</p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% endfor %}
+    </div>
     {% if is_paginated %}
         {% if page_obj.has_previous %}
             <a class="btn btn-outline-info mb-4" href="?page=1">First</a>

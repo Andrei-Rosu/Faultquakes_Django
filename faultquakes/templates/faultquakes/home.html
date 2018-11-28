@@ -1,72 +1,95 @@
 {% extends "faultquakes/base.html" %}
 {% block content %}
-<div class="row text-center">
 
-</div><!-- /.row .text-center -->
 
-    <div class="row text-center">
-{% for news in news %}
-        <article class="media content-section">
+
+    <div class="jumbotron p-3 p-md-5 text-black rounded bg-white">
+        <div class="col-md-6 px-0">
+            <h1 class="display-6 font-italic" >
+                Welcome to the Geology Laboratory of Ecole Normale Supérieure</h1>
+        </div>
+        <div class="col-md-12 px-0">
+            <p class="lead my-3">A place for research...
+                The Geology Laboratory of ENS is both a place for research
+                and a place of training in Earth Sciences through teaching and research.
+                Although the size of the laboratory is modest,
+                it covers a very wide spectrum of research topics:
+                geophysics, seismology, geodesy, seismotectonics, geology,
+                rock mechanics, thermochemistry, mineralogy, geomaterials, geochemistry.
+                This strongly favors exchanges between topics which is a strong feature
+                of the laboratory.</p>
+            <p class="lead mb-0"><a href="#" class="text-info font-weight-bold">Continue reading...</a></p>
+        </div>
+    </div>
+    <h3><strong class="d-inline-block mb-2 text-primary"><a href="{% url 'news' %}">News</a></strong></h3>
+    <div class="row mb-2">
+        {% for news in news %}
+            <div class="col-md-4  card-deck mb-3 ">
+                <div class="card">
+                <div class="card-body">
         {% if news.image %}
             <img class="rounded-circle article-img" src="{{ news.image.url }}">
         {% endif %}
-            <div class="media-body">
-                <div class="article-metadata">
+
                 {% if news.video %}
                 <iframe width="560" height="315" src="{{ news.video }}" frameborder="0" allow="accelerometer;
                 autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 {% endif %}
-                    <small class="text-muted">{{ news.date_posted|date:"d F, Y" }}</small>
+                    <h4><a class="article-title" href="{% url 'news-detail' news.id%}">{{ news.title|safe|truncatewords:"15"|linebreaks  }}</a></h4>
+                        <p class="card-text">{{ news.authors|safe|truncatewords:"15"|linebreaks }}</p>
+                        <p><strong class="text-muted">{{ news.year|date:"Y" }}</strong></p>
+
                     {% if news.uploaded_by == user %}
                         <div>
                         <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'news-update' news.id %}">Update</a>
                         <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'news-delete' news.id %}">Delete</a>
                         </div>
                     {% endif %}
-                </div>
-            <h4><a class="article-title" href="{% url 'news-detail' news.id%}">{{ news.title }}</a></h4>
+
                 <p class="article-content">{{ news.content|safe|truncatewords:"35"|linebreaks }}</p>
+                <a href="{% url 'news-detail' news.id %}">read more...</a>
+
+                </div>
+        </div>
             </div>
-        </article>
     {% endfor %}
-        {% for post in posts %}
-            <div class="col-lg-3 col-md-6 mb-4">
+    </div>
+    <h3><strong class="d-inline-block mb-2 text-primary"><a href="{% url 'publications' %}">Publications</a></strong></h3>
+    <div class="row mb-2">
+        {% for post in post|slice:"2" %}
+            <div class="col-md-6  card-deck mb-3 ">
                 <div class="card">
-                    <img class="card-img-top" src="{{ post.image.url }}" alt="">
                     <div class="card-body">
-                        <h4><a class="article-title" href="{% url 'post-detail' post.id%}">{{ post.title }}</a></h4>
-                        <p class="card-text">{{ post.content|safe|truncatewords:"15"|linebreaks }}
-      <a href="{% url 'post-detail' post.id %}">read more</a></p>
-                        <small class="text-muted">{{ post.date_posted|date:"d F, Y" }}</small>
-                        <a class="mr-2" href="{% url 'user-posts' post.uploaded_by.username %}">by {{ post.uploaded_by }}</a>
-                        <p>Found in: {% for team in post.team %}
-                         <small class="text-muted">{{ team }} </small>
-                        {% endfor %}</p>
+                        <h4><a class="article-title" href="{% url 'post-detail' post.id%}">{{ post.title|safe|truncatewords:"15"|linebreaks  }}</a></h4>
+                        <p class="card-text">{{ post.authors|safe|truncatewords:"15"|linebreaks }}</p>
+                        <a href="{% url 'post-detail' post.id %}">read more...</a></p>
+                        <p><strong class="text-muted">{{ post.year|date:"Y" }}</strong></p>
+                        <p>Found in:
+                            <small class="text-muted">{{ post.team }} </small></p>
                     </div>
                 </div>
             </div>
         {% endfor %}
-
-    </div><!-- /.row .text-center -->
-
-    {% if is_paginated %}
-        {% if page_obj.has_previous %}
-            <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
-            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-        {% endif %}
-
-        {% for num in page_obj.paginator.page_range %}
-            {% if page_obj.number == num %}
-                <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
-            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3'%}
-                <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+    </div>
+    <div class="row mb-2">
+        {% for post in post %}
+            {% if forloop.counter == 3 %}
+                <div class="col-md-4  card-deck mb-3 ">
+                <div class="card">
+                    <div class="card-body">
+                        <h4><a class="article-title" href="{% url 'post-detail' post.id%}">{{ post.title|safe|truncatewords:"15"|linebreaks  }}</a></h4>
+                        <p class="card-text">{{ post.authors|safe|truncatewords:"15"|linebreaks }}</p>
+                        <a href="{% url 'post-detail' post.id %}">read more...</a></p>
+                        <p><strong class="text-muted">{{ post.year|date:"Y" }}</strong></p>
+                        <p>Found in:
+                            <small class="text-muted">{{ post.team }} </small></p>
+                    </div>
+                </div>
+            </div>
             {% endif %}
         {% endfor %}
+    </div>
 
-        {% if page_obj.has_next %}
-            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
-            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-        {% endif %}
 
-    {% endif %}
+
 {% endblock content %}

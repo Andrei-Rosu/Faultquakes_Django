@@ -35,9 +35,10 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 # Application definition
 
 INSTALLED_APPS = [
+    'phonenumber_field',
     'django_summernote',
     'crispy_forms',
-    'news.apps.NewsConfig',
+    'members.apps.MembersConfig',
     'openings.apps.OpeningsConfig',
     'users.apps.UsersConfig',
     'faultquakes.apps.FaultquakesConfig',
@@ -83,18 +84,18 @@ WSGI_APPLICATION = 'Faultquakes_Django.wsgi.application'
 
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'Django default',
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': 'Django default',
+#    }
+#}
 
-# DATABASES = {
-#     'default': dj_database_url.config(
-#         default=config('DATABASE_URL')
-#     )
-# }
+DATABASES = {
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+     )
+ }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators

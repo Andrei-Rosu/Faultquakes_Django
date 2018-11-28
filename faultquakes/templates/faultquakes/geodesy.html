@@ -12,7 +12,7 @@
                         </div>
                     {% endif %}
                 </div>
-                <p class="article-content">{{ geodesy.title }}<br/>{{ geodesy.content|safe}}</p>
+                <p class="article-content">{{ geodesy.title }}<br/>{{ geodesy.content|safe|truncatewords:"15"|linebreaks}}</p>
             </div>
         </article>
     {% endfor %}

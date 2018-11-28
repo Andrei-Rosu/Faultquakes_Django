@@ -21,7 +21,8 @@
                                 </div>
 
                                 <h5><a class="article-title" href="{% url 'job-detail' job.id%}">{{ job.title }}</a></h5>
-                                <p class="article-content"><span>{{ job.content }}</span></p>
+                                <p class="article-content"><span>{{ job.content|safe|truncatewords:"15"|linebreaks  }}</span></p>
+                            <a href="{% url 'job-detail' job.id %}">read more...</a></p>
                                 <small class="text-muted">Deadline : {{ job.deadline|date:"d F, Y" }}</small>
                             </div>
                         </article>
@@ -49,7 +50,8 @@
                                 </div>
 
                                 <h5><a class="article-title" href="{% url 'job-detail' job.id%}">{{ job.title }}</a></h5>
-                                <p class="article-content"><span>{{ job.content }}</span></p>
+                                <p class="article-content"><span>{{ job.content|safe|truncatewords:"15"|linebreaks }}</span></p>
+                            <a href="{% url 'job-detail' job.id %}">read more...</a></p>
                                 <small class="text-muted">Deadline : {{ job.deadline|date:"d F, Y" }}</small>
                             </div>
 

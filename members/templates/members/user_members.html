@@ -1,16 +1,15 @@
 {% extends "faultquakes/base.html" %}
 {% block content %}
-    <h1 class="mb-3">Geology news ({{ page_obj.paginator.count }})</h1>
-    {% for news in news %}
+    <h1 class="mb-3">Members ({{ page_obj.paginator.count }})</h1>
+    {% for member in members %}
         <article class="media content-section">
-            <img class="rounded-circle article-img" src="{{ news.uploaded_by.profile.image.url }}">
+            <img class="rounded-circle article-img" src="{{ member.uploaded_by.profile.image.url }}">
             <div class="media-body">
                 <div class="article-metadata">
-                    <a class="mr-2" href="{% url 'user-news' news.uploaded_by.username %}">{{ news.uploaded_by }}</a>
-                    <small class="text-muted">{{ news.date_posted|date:"d F, Y" }}</small>
+                    <a class="mr-2" href="{% url 'user-news' member.uploaded_by.username %}">{{ member.uploaded_by }}</a>
                 </div>
-                <h2><a class="article-title" href="{% url 'news-detail' news.id%}">{{ news.title }}</a></h2>
-                <p class="article-content">{{ news.content }}</p>
+                <h2><a class="article-title" href="{% url 'member-detail' member.id%}">{{ member.name }}</a></h2>
+                <p class="article-content">{{ member.description }}</p>
             </div>
         </article>
     {% endfor %}

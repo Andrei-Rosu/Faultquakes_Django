@@ -5,6 +5,9 @@ from .models import Research
 from .models import Geodesy
 from .models import Modeling
 from .models import Rock
+from .models import Newswall
+
+
 
 
 class PostAdmin(SummernoteModelAdmin):
@@ -32,5 +35,6 @@ admin.site.register(Research, ResearchAdmin)
 admin.site.register(Geodesy, GeodesyAdmin)
 admin.site.register(Modeling, ModelingAdmin)
 admin.site.register(Rock, RockAdmin)
+admin.site.register(Newswall)
 
 # Register your models here.

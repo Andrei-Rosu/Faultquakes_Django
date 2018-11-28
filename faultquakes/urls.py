@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import (PostListView,
+from .views import (
+                    PostListView,
                     PublicationsListView,
                     PostDetailView,
                     PostCreateView,
@@ -31,6 +32,12 @@ from .views import (PostListView,
                     RockUpdateView,
                     RockDeleteView,
                     MembersListView,
+                    NewswallListView,
+                    NewswallDetailView,
+                    NewswallCreateView,
+                    NewswallUpdateView,
+                    NewswallDeleteView,
+                    UserNewswallListView,
                     IndexView)
 from . import views
 
@@ -38,7 +45,12 @@ from . import views
 
 
 urlpatterns = [
-    path('', PostListView.as_view(), name='faultquakes-home'),
+    path('news/', NewswallListView.as_view(), name='news'),
+    path('news/<int:pk>/', NewswallDetailView.as_view(), name='news-detail'),
+    path('news/new/', NewswallCreateView.as_view(), name='news-create'),
+    path('news/<int:pk>/update/', NewswallUpdateView.as_view(), name='news-update'),
+    path('news/<int:pk>/delete/', NewswallDeleteView.as_view(), name='news-delete'),
+    path('news/user/<str:username>', UserNewswallListView.as_view(), name='user-news'),
     path('user/members/', MembersListView.as_view(), name='members'),
     path('publications/', PublicationsListView.as_view(), name='publications'),
     path('research/', ResearchListView.as_view(), name='research'),
@@ -71,10 +83,5 @@ urlpatterns = [
     path('post/<int:pk>/update/', PostUpdateView.as_view(), name='post-update'),
     path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),
     path('map/', views.map, name='faultquakes-map'),
-    path('index/', IndexView.as_view(), name='faultquakes-index'),
+    path('', IndexView.as_view(), name='faultquakes-index'),
 ]
-
-
-
-# Class based views are looking for a view of the format:
-# <app>/<model>_<viewtype>.html

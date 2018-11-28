@@ -25,14 +25,14 @@
 <header class="site-header">
     <nav class="navbar navbar-expand-md bg-white fixed-top">
         <div class="container">
-            <a class="navbar-brand mr-4" href="{% url 'faultquakes-home'%}">FQKS logo</a>
+            <a class="navbar-brand mr-4" href="{% url 'faultquakes-index'%}">FQKS logo</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarToggle">
                 <div class="navbar-nav mr-auto">
                     <a class="nav-item nav-link" href="{% url 'faultquakes-map' %}">Map</a>
-                    <a class="nav-item nav-link" href="#">Members</a>
+                    <a class="nav-item nav-link" href="{% url 'members' %}">Members</a>
                 </div>
                 <!-- Navbar Right Side -->
                 <div class="navbar-nav">
@@ -49,6 +49,7 @@
                         <a class="nav-item nav-link" href="{% url 'post-create' %}">Publication</a>
                         <a class="nav-item nav-link" href="{% url 'job-create' %}">Job</a>
                         <a class="nav-item nav-link" href="{% url 'news-create' %}">News</a>
+                              <a class="nav-item nav-link" href="{% url 'member-create' %}">News</a>
                           </div>
                         </div>
                         <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>

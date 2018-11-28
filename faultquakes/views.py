@@ -7,20 +7,16 @@ from .models import Research
 from .models import Geodesy
 from .models import Modeling
 from .models import Rock
-from news.models import Newswall
+from .models import Newswall
 from django.db import models
 from PIL import Image
 
-def news(request):
-    context = {
-        'news': Newswall.objects.all()
-    }
-    return render(request, 'faultquakes/home.html', context)
 
 def home(request):
+    posts = Post.objects.all()
     context = {
-        'posts': Post.objects.all()
-    }
+        'posts': posts
+        }
     return render(request, 'faultquakes/home.html', context)
 
 
@@ -95,9 +91,6 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 def map(request):
     return render(request, 'faultquakes/map.html', {'title': 'map'})
-
-
-
 
 
 def research(request):
@@ -183,17 +176,16 @@ class MembersListView(ListView):
 
 class IndexView(ListView):
     context_object_name = 'home_list'
-    template_name = 'faultquakes/index.html'
+    template_name = 'faultquakes/home.html'
     queryset = User.objects.all()
     paginate_by = 4
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['post'] = Post.objects.all().order_by('-date_posted')
-        context['research'] = Research.objects.all().order_by('-date_posted')
+        context['news'] = Newswall.objects.all().order_by('-date_posted')
 
         return context
-
 
 
 def geodesy(request):
@@ -331,7 +323,6 @@ class ModelingDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return False
 
 
-
 def rock(request):
     context = {
         'rock': Rock.objects.all()
@@ -397,6 +388,76 @@ class RockDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == rocks.uploaded_by:
             return True
         return False
+
+
+def news(request):
+    context = {
+        'news': Newswall.objects.all()
+    }
+    return render(request, 'faultquakes/home.html', context)
+
+
+class NewswallListView(ListView):
+    model = Newswall
+    template_name = 'faultquakes/news.html'  # <app>/<model>_<viewtype>.html
+    context_object_name = 'news'
+    ordering = ['-date_posted']
+    paginate_by = 8
+
+
+class UserNewswallListView(ListView):
+    model = Newswall
+    template_name = 'faultquakes/user_news.html'  # <app>/<model>_<viewtype>.html
+    context_object_name = 'news'
+    paginate_by = 8
+
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Newswall.objects.filter(uploaded_by=user).order_by('-date_posted')
+
+
+class NewswallDetailView(DetailView):
+    model = Newswall
+    template_name = 'faultquakes/news_detail.html'
+    context_object_name = 'news'
+
+
+class NewswallCreateView(LoginRequiredMixin, CreateView):
+    template_name = 'faultquakes/news_form.html'
+    model = Newswall
+    fields = ['title', 'content', 'image', 'video']
+
+    def form_valid(self, form):
+        form.instance.uploaded_by = self.request.user
+        return super().form_valid(form)
+
+
+class NewswallUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    template_name = 'faultquakes/news_form.html'
+    model = Newswall
+    fields = ['title', 'content', 'image', 'video']
+
+    def form_valid(self, form):
+        form.instance.uploaded_by = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        news = self.get_object()
+        if self.request.user == news.uploaded_by:
+            return True
+        return False
+
+
+class NewswallDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Newswall
+    success_url = '/'
+
+    def test_func(self):
+        news = self.get_object()
+        if self.request.user == news.uploaded_by:
+            return True
+        return False
+
 
 
 
